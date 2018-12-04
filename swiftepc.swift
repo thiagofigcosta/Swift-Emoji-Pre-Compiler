@@ -1,3 +1,5 @@
+#!/usr/bin/swift
+
 import Foundation
 
 func preprocess(filename:String) -> String {
