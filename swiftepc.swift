@@ -18,7 +18,7 @@ func preprocess(filename:String) -> String {
 		}
 	}
 
-	try! new_file_content.write(toFile: newfilename, atomically: true, encoding: .utf8) //trocar ! por throws
+	try! new_file_content.write(toFile: String(newfilename), atomically: true, encoding: .utf8) //trocar ! por throws
 	return String (newfilename)
 }
 
@@ -33,7 +33,7 @@ func shell(cmd: String, args: [String] = []) -> String {
     task.launch()
 
     let data = pipe.fileHandleForReading.readDataToEndOfFile()
-    let output: String = String(data: data, encoding: String.Encoding.utf8) as String!
+    let output: String = String(decoding: data, as: UTF8.self)
 
     return output
 }
